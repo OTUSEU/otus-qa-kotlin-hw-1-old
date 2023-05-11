@@ -1,15 +1,15 @@
 package hw01_testrunner
 
-class Runner : TestRunner {
+class Runner<T:Any> : TestRunner<T> {
 
-    override fun <T> runTest(steps: T, test: () -> Unit) {
-        steps?.runStep("before")
+    override fun  runTest(steps: T, test: () -> Unit) {
+        steps.runStep("before")
 
         println("Some tests launched...")
         test()
         println("Some tests passed...")
 
-        steps?.runStep("after")
+        steps.runStep("after")
     }
 
     fun Any.runStep(stepName: String) {
